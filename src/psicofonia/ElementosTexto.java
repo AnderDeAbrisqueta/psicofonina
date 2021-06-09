@@ -8,11 +8,10 @@ public class ElementosTexto {
 	public static char creaLetra() {
 		char letra = ' ';
 
-		// Peso de las letras 1 por 10.000
 		HashMap<Character, Integer> letraPeso = new HashMap<Character, Integer>();
 
 		letraPeso.put('a', 1253);
-        letraPeso.put('b', 142);
+		letraPeso.put('b', 142);
 		letraPeso.put('c', 468);
 		letraPeso.put('d', 586);
 		letraPeso.put('e', 1368);
@@ -40,11 +39,11 @@ public class ElementosTexto {
 		letraPeso.put('z', 52);
 
 		int probabilidadLetra = (int) ((Math.random() * (10045 - 0 + 1) + 0));
-		
+
 		int suma = 0;
 
 		for (Map.Entry<Character, Integer> pareja : letraPeso.entrySet()) {
-			
+
 			suma += pareja.getValue();
 
 			if (suma >= probabilidadLetra) {
@@ -57,13 +56,47 @@ public class ElementosTexto {
 	}
 
 	public static String creaPalabra() {
-
 		String palabra = " ";
-		int numeroCaracteresPalabra = (int) ((Math.random() * (20 - 2 + 1) + 2));
 
-		for (int i = 0; i < numeroCaracteresPalabra; i++) {
-			palabra += String.valueOf(creaLetra());
+		HashMap<Integer, Integer> numeroCaracteresPalabra = new HashMap<Integer, Integer>();
+
+		numeroCaracteresPalabra.put(1, 5);
+		numeroCaracteresPalabra.put(2, 5);
+		numeroCaracteresPalabra.put(3, 10);
+		numeroCaracteresPalabra.put(4, 15);
+		numeroCaracteresPalabra.put(5, 30);
+		numeroCaracteresPalabra.put(6, 15);
+		numeroCaracteresPalabra.put(7, 5);
+		numeroCaracteresPalabra.put(8, 3);
+		numeroCaracteresPalabra.put(9, 3);
+		numeroCaracteresPalabra.put(10, 3);
+		numeroCaracteresPalabra.put(11, 1);
+		numeroCaracteresPalabra.put(12, 1);
+		numeroCaracteresPalabra.put(13, 1);
+		numeroCaracteresPalabra.put(14, 1);
+		numeroCaracteresPalabra.put(15, 1);
+		numeroCaracteresPalabra.put(16, 1);
+
+		int probabilidadCaracterPalabra = (int) ((Math.random() * (100 - 0 + 1) + 0));
+
+		int suma = 0;
+
+		for (Map.Entry<Integer, Integer> pareja : numeroCaracteresPalabra.entrySet()) {
+
+			suma += pareja.getValue();
+
+			if (suma >= probabilidadCaracterPalabra) {
+				int numeroCaracteresPorPalabra = pareja.getKey();
+				
+				for (int i = 0; i < numeroCaracteresPorPalabra; i++) {
+					palabra += String.valueOf(creaLetra());
+				}
+				
+				break;
+			}
 		}
+
+		
 		return palabra;
 	}
 
