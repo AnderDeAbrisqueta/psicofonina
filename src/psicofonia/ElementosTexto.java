@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class ElementosTexto {
 
-	public static char creaLetra() {
+	private static char creaLetra() {
 		char letra = ' ';
 
 		HashMap<Character, Integer> letraPeso = new HashMap<Character, Integer>();
@@ -55,8 +55,8 @@ public class ElementosTexto {
 		return letra;
 	}
 
-	public static String creaPalabra() {
-		String palabra = " ";
+	private static String creaPalabra() {
+		String palabra = "";
 
 		HashMap<Integer, Integer> numeroCaracteresPalabra = new HashMap<Integer, Integer>();
 
@@ -87,17 +87,58 @@ public class ElementosTexto {
 
 			if (suma >= probabilidadCaracterPalabra) {
 				int numeroCaracteresPorPalabra = pareja.getKey();
-				
+
 				for (int i = 0; i < numeroCaracteresPorPalabra; i++) {
 					palabra += String.valueOf(creaLetra());
 				}
-				
+
 				break;
 			}
 		}
 
+		return palabra + " ";
+	}
+
+	private static String creaOracion() {
+		String oracion = "";
+
+		int longitudOracion = (int) ((Math.random() * (15 - 5 + 1) + 5));
+
+		for (int i = 0; i < longitudOracion; i++) {
+			
+			if (i == 0) {
+				oracion += creaPalabra().toUpperCase();
+			} else {
+				oracion += creaPalabra();
+			}
+		}
+
+		return oracion + ".";
+	}
+
+	private static String creaParrafo() {
+		String parrafo = "";
 		
-		return palabra;
+		int lineasParrafo = (int) ((Math.random() * (20 - 1 + 1) + 1));
+
+		for (int i = 0; i < lineasParrafo; i++) {
+			parrafo += creaOracion() + "\n";
+		}
+
+		return parrafo;
+	}
+	
+	public static String creaTexto() {
+		String texto = "";
+		
+		int numeroParrafo = (int) ((Math.random() * (20 - 1 + 1) + 1));
+
+		for (int i = 0; i < numeroParrafo; i++) {
+			texto += creaParrafo() + "\n\n";
+		}
+		
+		return texto;
+		
 	}
 
 }
