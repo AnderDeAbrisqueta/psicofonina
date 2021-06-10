@@ -3,8 +3,13 @@ package psicofonia;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ElementosTexto {
-
+public class Portadora {
+	
+/**
+ * Este método genera una letra aleatoriamente dándole un mayor peso a las letras 
+ * según su frecuencia en las palabras en español. 
+ * @return
+ */
 	private static char creaLetra() {
 		char letra = ' ';
 
@@ -56,7 +61,7 @@ public class ElementosTexto {
 	}
 
 	private static String creaPalabra() {
-		String palabra = "";
+		String palabra = " ";
 
 		HashMap<Integer, Integer> numeroCaracteresPalabra = new HashMap<Integer, Integer>();
 
@@ -96,7 +101,7 @@ public class ElementosTexto {
 			}
 		}
 
-		return palabra + " ";
+		return palabra;
 	}
 
 	private static String creaOracion() {
@@ -107,7 +112,8 @@ public class ElementosTexto {
 		for (int i = 0; i < longitudOracion; i++) {
 			
 			if (i == 0) {
-				oracion += creaPalabra().toUpperCase();
+				oracion += creaPalabra().toUpperCase().charAt(1) + 
+						creaPalabra().substring(1).toLowerCase();
 			} else {
 				oracion += creaPalabra();
 			}
@@ -128,7 +134,7 @@ public class ElementosTexto {
 		return parrafo;
 	}
 	
-	public static String creaTexto() {
+	public static String mensajeGrabado() {
 		String texto = "";
 		
 		int numeroParrafo = (int) ((Math.random() * (20 - 1 + 1) + 1));

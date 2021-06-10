@@ -1,9 +1,9 @@
 package psicofonia;
 
-public class Texto {
+public class TCI {
 
 	public static void main(String[] args) {
-		System.out.println(ElementosTexto.creaTexto());
+		System.out.println(Portadora.mensajeGrabado());
 
 	}
 
